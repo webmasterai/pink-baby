@@ -1,8 +1,7 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { AdminLoginForm } from "@/components/admin/AdminLoginForm";
-import { getSessionUser } from "@/lib/auth/session";
-import { isStaffRole } from "@/lib/cms/roles";
+import { getCmsSessionUser } from "@/lib/cms/cms-session";
 import { safeAdminReturnPath } from "@/lib/cms/safe-return";
 
 export const metadata = {
@@ -15,10 +14,10 @@ type Props = { searchParams: Promise<{ next?: string; reason?: string }> };
 export default async function AdminLoginPage({ searchParams }: Props) {
   const sp = await searchParams;
   const next = safeAdminReturnPath(sp.next);
-  const user = await getSessionUser();
+  const user = await getCmsSessionUser();
 
-  // Already authorized staff → dashboard (or safe next)
-  if (user && isStaffRole(user.role)) {
+  // Already authorized CMS session → dashboard (or safe next)
+  if (user) {
     redirect(next);
   }
 

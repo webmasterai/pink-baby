@@ -82,6 +82,27 @@ export const loginSchema = z.object({
   password: z.string().min(1).max(128),
 });
 
+/** CMS admin login — username may be an email or a plain username. */
+export const adminLoginSchema = z
+  .object({
+    username: z.string().trim().min(1).max(254).optional(),
+    email: z.string().trim().min(1).max(254).optional(),
+    password: z.string().min(1).max(128),
+  })
+  .superRefine((data, ctx) => {
+    if (!(data.username ?? data.email)?.trim()) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Username is required.",
+        path: ["username"],
+      });
+    }
+  })
+  .transform((data) => ({
+    username: (data.username ?? data.email)!.trim(),
+    password: data.password,
+  }));
+
 export const forgotPasswordSchema = z.object({
   email: z
     .string()

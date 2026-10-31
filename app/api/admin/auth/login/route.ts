@@ -1,29 +1,23 @@
 import { getClientIp } from "@/lib/client-ip";
-import { verifyPassword } from "@/lib/auth/password";
 import {
-  createSession,
-  destroySession,
-  setSessionCookie,
-  SESSION_COOKIE,
-} from "@/lib/auth/session";
-import { isStaffRole } from "@/lib/cms/roles";
+  createCmsSessionToken,
+  setCmsSessionCookie,
+} from "@/lib/cms/cms-session";
+import {
+  getCmsEnvAuthConfig,
+  verifyCmsEnvCredentials,
+} from "@/lib/cms/env-auth";
 import { safeAdminReturnPath } from "@/lib/cms/safe-return";
 import { assertCsrf } from "@/lib/csrf";
-import { getDb } from "@/lib/db";
 import { handleRouteError, jsonError, jsonOk } from "@/lib/api";
 import { consumeRateLimit } from "@/lib/rate-limit-db";
-import { assertBodySize, loginSchema } from "@/lib/validation";
-import { cookies } from "next/headers";
-import { z } from "zod";
-
-const bodySchema = loginSchema.extend({
-  next: z.string().optional(),
-});
+import { assertBodySize, adminLoginSchema } from "@/lib/validation";
 
 /**
- * Admin-only login. Does not promote customers.
- * Replaces any existing session (including a customer cart session cookie)
- * with the staff user's session after role verification.
+ * Admin-only login against server env credentials
+ * (CMS_ADMIN_USERNAME + CMS_ADMIN_PASSWORD_HASH).
+ * Issues a CMS session signed with CMS_SESSION_SECRET.
+ * Does not touch SQLite users / customer ecommerce sessions.
  */
 export async function POST(request: Request) {
   try {
@@ -34,62 +28,44 @@ export async function POST(request: Request) {
       return jsonError("Too many admin login attempts. Try later.", 429);
     }
 
-    const raw = await request.text();
-    assertBodySize(raw);
-    const parsed = bodySchema.safeParse(JSON.parse(raw));
-    if (!parsed.success) {
-      return jsonError("Invalid email or password.", 401);
-    }
-
-    const row = getDb()
-      .prepare(
-        `SELECT id, email, name, role, password_hash, email_verified_at FROM users WHERE email = ?`,
-      )
-      .get(parsed.data.email) as
-      | {
-          id: string;
-          email: string;
-          name: string;
-          role: string;
-          password_hash: string;
-          email_verified_at: string | null;
-        }
-      | undefined;
-
-    if (!row || !(await verifyPassword(parsed.data.password, row.password_hash))) {
-      return jsonError("Invalid email or password.", 401);
-    }
-
-    if (!isStaffRole(row.role)) {
+    const config = getCmsEnvAuthConfig();
+    if (!config) {
       return jsonError(
-        "This account is not authorized for CMS access. Use an admin account created via the setup script.",
-        403,
+        "CMS authentication is not configured on this server.",
+        503,
       );
     }
 
-    if (process.env.SMTP_HOST && !row.email_verified_at) {
-      return jsonError("Please verify your email before signing in.", 403);
+    const raw = await request.text();
+    assertBodySize(raw);
+    const body = JSON.parse(raw) as Record<string, unknown>;
+    const parsed = adminLoginSchema.safeParse(body);
+    if (!parsed.success) {
+      return jsonError("Invalid username or password.", 401);
     }
 
-    // Replace prior session (e.g. customer) so roles cannot bleed across
-    const jar = await cookies();
-    const previous = jar.get(SESSION_COOKIE)?.value;
-    if (previous) await destroySession(previous);
+    const username = parsed.data.username;
+    const ok = await verifyCmsEnvCredentials(username, parsed.data.password);
+    if (!ok) {
+      return jsonError("Invalid username or password.", 401);
+    }
 
-    const sessionToken = await createSession(row.id, {
-      ip,
-      userAgent: request.headers.get("user-agent"),
-    });
-    await setSessionCookie(sessionToken);
+    const token = await createCmsSessionToken(username.trim());
+    await setCmsSessionCookie(token);
+
+    const next =
+      typeof body.next === "string" ? body.next : undefined;
 
     return jsonOk({
       ok: true,
-      next: safeAdminReturnPath(parsed.data.next),
+      next: safeAdminReturnPath(next),
       user: {
-        id: row.id,
-        email: row.email,
-        name: row.name,
-        role: row.role,
+        id: "cms-env-admin",
+        email: username.includes("@")
+          ? username.trim().toLowerCase()
+          : `${username.trim()}@cms.local`,
+        name: "CMS Admin",
+        role: "owner",
       },
     });
   } catch (err) {

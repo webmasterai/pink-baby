@@ -98,9 +98,9 @@ export function AdminShell({
               e.preventDefault();
               try {
                 const { apiFetch } = await import("@/lib/client-fetch");
-                await apiFetch("/api/auth/logout", { method: "POST" });
+                await apiFetch("/api/admin/auth/logout", { method: "POST" });
               } catch {
-                await fetch("/api/auth/logout", { method: "POST" });
+                await fetch("/api/admin/auth/logout", { method: "POST" });
               }
               window.location.href = "/admin/login";
             }}

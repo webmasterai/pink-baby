@@ -1,13 +1,7 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
 import { withAdminApi } from "@/lib/cms/admin-api";
 import { writeAudit } from "@/lib/cms/audit";
-import {
-  SESSION_COOKIE,
-  destroyOtherSessions,
-} from "@/lib/auth/session";
-import { assertPasswordStrength, hashPassword, verifyPassword } from "@/lib/auth/password";
-import { getDb, nowIso } from "@/lib/db";
+import { getCmsEnvAuthConfig } from "@/lib/cms/env-auth";
 import { z } from "zod";
 
 export async function GET(req: Request) {
@@ -15,13 +9,18 @@ export async function GET(req: Request) {
     req,
     "dashboard",
     async (user) => {
-      const row = getDb()
-        .prepare(
-          `SELECT id, email, name, phone, role, created_at AS createdAt, updated_at AS updatedAt
-           FROM users WHERE id = ?`,
-        )
-        .get(user.id);
-      return NextResponse.json({ profile: row });
+      const config = getCmsEnvAuthConfig();
+      return NextResponse.json({
+        profile: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          phone: user.phone,
+          role: user.role,
+          authSource: "environment",
+          username: config?.username ?? null,
+        },
+      });
     },
     { csrf: false },
   );
@@ -38,15 +37,18 @@ export async function PUT(req: Request) {
     if (!body.success) {
       return NextResponse.json({ error: "Invalid profile fields." }, { status: 400 });
     }
-    getDb()
-      .prepare(`UPDATE users SET name = ?, phone = ?, updated_at = ? WHERE id = ?`)
-      .run(body.data.name, body.data.phone || null, nowIso(), user.id);
+    // Env CMS admin identity is not stored in SQLite — display name is session-only.
     writeAudit({
       actorId: user.id,
-      action: "profile.update",
+      action: "profile.update_ignored",
       entityType: "user",
       entityId: user.id,
+      meta: { reason: "cms_env_auth" },
     });
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({
+      ok: true,
+      warning:
+        "CMS admin identity comes from environment variables. Update CMS_ADMIN_USERNAME on the server to change the login name.",
+    });
   });
 }

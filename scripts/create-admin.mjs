@@ -1,10 +1,12 @@
 /**
- * Create or promote a local admin user for Pink Baby CMS.
+ * LEGACY: Creates a SQLite staff row. CMS login no longer uses SQLite users.
+ * Prefer environment CMS auth:
+ *   npm run cms:hash-password
+ *   set CMS_ADMIN_USERNAME / CMS_ADMIN_PASSWORD_HASH / CMS_SESSION_SECRET
+ * See docs/CMS-SETUP.md.
  *
- * Usage:
+ * Usage (legacy only):
  *   node scripts/create-admin.mjs --email admin@pinkbaby.local --password 'ChooseAStrongPass1!' --name 'Owner'
- *
- * Requires AUTH_SECRET in env for production-like runs (optional locally).
  */
 import { createHash, randomBytes, scryptSync } from "node:crypto";
 import fs from "node:fs";

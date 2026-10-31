@@ -4,36 +4,56 @@
 
 `http://127.0.0.1:3000/admin/login`
 
-Unauthenticated or non-staff visitors to `/admin` are redirected here.  
-Storefront customers are **not** treated as admins and are not sent to `/account?next=/admin`.
+Unauthenticated visitors to `/admin` are redirected here.  
+Storefront customers use **My account** and never receive CMS access from registration.
 
-## Secure initial admin (no hardcoded passwords)
+## Environment-based CMS authentication
 
-Staff accounts are **not** created by registering on the storefront.  
-`ADMIN_EMAILS` no longer auto-promotes customers on register/login.
+CMS login reads **server-only** environment variables (not SQLite staff users):
 
-```bash
-node scripts/create-admin.mjs --email you@example.com --password "ChooseAStrongPass1!" --name "Owner" --role owner
-```
+| Variable | Purpose |
+|----------|---------|
+| `CMS_ADMIN_USERNAME` | Username or email accepted at `/admin/login` |
+| `CMS_ADMIN_PASSWORD_HASH` | **bcrypt hash only** (never plaintext) |
+| `CMS_SESSION_SECRET` | Signs the `pb_cms_session` cookie (min 32 chars) |
 
-Then open `/admin/login` and sign in with that email and password.
-
-Required env (`.env.local`):
+Also keep storefront CSRF secrets:
 
 - `AUTH_SECRET=` (long random)
 - `CSRF_SECRET=` (long random)
 - `NEXT_PUBLIC_SITE_URL=http://127.0.0.1:3000`
 
-Optional: `ADMIN_EMAILS` may still be listed for ops notes, but it does **not** grant CMS access by itself.
+### Generate a password hash
+
+```bash
+npm run cms:hash-password
+```
+
+The script prints `CMS_ADMIN_PASSWORD_HASH=…` and a suggested `CMS_SESSION_SECRET`.  
+Paste those into `.env.local` / Coolify. Do **not** put the plaintext password into `CMS_ADMIN_PASSWORD_HASH`.
+
+Then open `/admin/login` and sign in with `CMS_ADMIN_USERNAME` and the plaintext password you typed into the generator.
+
+Customer accounts, carts, and orders remain in SQLite and are unaffected.
+
+## Coolify
+
+Set these secrets on the Pink Baby service (do not commit them):
+
+1. `CMS_ADMIN_USERNAME`
+2. `CMS_ADMIN_PASSWORD_HASH` (from `npm run cms:hash-password`)
+3. `CMS_SESSION_SECRET` (≥ 32 random characters)
+4. `AUTH_SECRET`
+5. `CSRF_SECRET`
+6. `NEXT_PUBLIC_SITE_URL` (public HTTPS origin)
+7. `DATA_DIR=/data` with a persistent volume mounted at `/data`
+
+Redeploy after updating env. Logs mention **missing variable names only**, never secret values.
 
 ## Roles
 
-| Role | Access |
-|------|--------|
-| `owner` / `admin` | Full CMS |
-| `editor` | Content, products, media, reviews, enquiries, subscribers |
-| `order_manager` | Orders, customers, enquiries |
-| `customer` | Storefront only — blocked from `/admin` and `/api/admin/*` |
+The env CMS admin is treated as `owner` (full CMS).  
+Storefront `customer` sessions cannot open `/admin` or `/api/admin/*`.
 
 ## Content migrations (deploys)
 
@@ -51,7 +71,8 @@ Empty production volume: set `CMS_BOOTSTRAP=1` for one restart only, then remove
 
 | Data | Location |
 |------|----------|
-| Users, sessions, orders, CMS docs, products, media metadata, audit | `data/store/pinkbaby.sqlite` |
+| Users, customer sessions, orders, CMS docs, products, media metadata, audit | `data/store/pinkbaby.sqlite` |
+| CMS admin session | signed cookie `pb_cms_session` (env secret) |
 | Uploaded media files | `data/uploads/` (served at `/uploads/...`) |
 | Backups | `data/backups/*.sqlite` |
 

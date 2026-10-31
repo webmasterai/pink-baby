@@ -10,7 +10,7 @@ import { safeAdminReturnPath } from "@/lib/cms/safe-return";
 export function AdminLoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,15 +20,14 @@ export function AdminLoginForm() {
     () => safeAdminReturnPath(searchParams.get("next")),
     [searchParams],
   );
-  const staffRequired = searchParams.get("reason") === "staff_required";
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
 
-    const trimmedEmail = email.trim();
-    if (!trimmedEmail) {
-      setError("Enter your admin email.");
+    const trimmed = username.trim();
+    if (!trimmed) {
+      setError("Enter your username or email.");
       return;
     }
     if (!password) {
@@ -44,14 +43,14 @@ export function AdminLoginForm() {
     try {
       const res = await apiFetch("/api/admin/auth/login", {
         method: "POST",
-        json: { email: trimmedEmail, password, next: nextPath },
+        json: { username: trimmed, password, next: nextPath },
       });
       const data = (await res.json()) as {
         error?: string;
         next?: string;
       };
       if (!res.ok) {
-        setError(data.error || "Invalid email or password.");
+        setError(data.error || "Invalid username or password.");
         setBusy(false);
         return;
       }
@@ -84,31 +83,17 @@ export function AdminLoginForm() {
             </p>
           </div>
 
-          {staffRequired ? (
-            <p
-              className="mb-4 rounded-xl bg-amber-50 px-3 py-2 text-sm text-amber-900"
-              role="status"
-            >
-              Your current account is a customer account and cannot open the
-              CMS. Sign in with an admin user, or use{" "}
-              <Link href="/account" className="font-semibold text-pb-pink underline">
-                your storefront account
-              </Link>
-              .
-            </p>
-          ) : null}
-
           <form onSubmit={onSubmit} className="space-y-4" noValidate>
             <label className="block text-sm font-semibold text-slate-700">
-              Email
+              Username or email
               <input
                 className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm font-normal outline-none transition focus:border-pb-pink focus:ring-2 focus:ring-pb-pink/20"
-                type="email"
-                name="email"
+                type="text"
+                name="username"
                 autoComplete="username"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="admin or you@example.com"
                 required
                 disabled={busy}
               />
@@ -158,8 +143,7 @@ export function AdminLoginForm() {
             <Link href="/account" className="font-semibold text-pb-pink hover:underline">
               My account
             </Link>
-            . Admin accounts are created with the setup script — customers are
-            never auto-promoted.
+            . CMS credentials are set via server environment variables.
           </p>
         </div>
       </div>

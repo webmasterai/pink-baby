@@ -30,7 +30,7 @@ Empty production volumes are **not** silently filled with seed catalog/content.
 2. Run **one** controlled bootstrap:
    - set `CMS_BOOTSTRAP=1` for a single restart, **or**
    - locally: `CMS_BOOTSTRAP=1 npx tsx -e "import { ensureCmsSeeded } from './lib/cms/seed.ts'; ensureCmsSeeded();"`
-3. Create the owner with `node scripts/create-admin.mjs ...`
+3. Configure CMS env auth (`CMS_ADMIN_USERNAME`, `CMS_ADMIN_PASSWORD_HASH`, `CMS_SESSION_SECRET`) — see `docs/CMS-SETUP.md`
 4. Remove `CMS_BOOTSTRAP` so later deploys never reseed
 
 Dev (`NODE_ENV !== production`) still bootstraps automatically for local ergonomics.

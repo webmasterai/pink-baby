@@ -69,12 +69,25 @@ npm run verify:assets
 
 Fails if catalog image paths are missing under `public/`.
 
-### 5. Admin bootstrap (empty volume)
+### 5. CMS admin credentials (Coolify env)
+
+CMS login does **not** use SQLite users. Set server secrets:
+
+```bash
+npm run cms:hash-password
+# then in Coolify:
+# CMS_ADMIN_USERNAME=…
+# CMS_ADMIN_PASSWORD_HASH=<bcrypt from script — never plaintext>
+# CMS_SESSION_SECRET=<≥32 random chars>
+```
+
+Also set `AUTH_SECRET` and `CSRF_SECRET` for storefront CSRF. See **`docs/CMS-SETUP.md`**.
+
+Optional empty-volume content bootstrap (unrelated to login):
 
 ```bash
 # one restart only
 CMS_BOOTSTRAP=1
-node scripts/create-admin.mjs --email … --password … --name … --role owner
 # then unset CMS_BOOTSTRAP
 ```
 

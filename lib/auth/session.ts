@@ -132,16 +132,14 @@ export async function requireUser(): Promise<SessionUser> {
   return user;
 }
 
+/**
+ * CMS authorization uses the env-backed CMS session cookie only.
+ * Storefront SQLite customer/staff sessions never grant /admin access.
+ */
 export async function requireAdmin(): Promise<SessionUser> {
-  const user = await requireUser();
-  if (
-    user.role !== "admin" &&
-    user.role !== "owner" &&
-    user.role !== "editor" &&
-    user.role !== "order_manager"
-  ) {
-    throw new AuthError("Admin access required.", 403);
-  }
+  const { getCmsSessionUser } = await import("@/lib/cms/cms-session");
+  const user = await getCmsSessionUser();
+  if (!user) throw new AuthError("Admin access required.", 401);
   return user;
 }
 

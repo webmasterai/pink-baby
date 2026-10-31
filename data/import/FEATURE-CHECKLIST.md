@@ -27,6 +27,7 @@ Local design: new pink storefront (not the old blue header).
 ## Remaining business configuration
 
 - `AUTH_SECRET` / `CSRF_SECRET` (required for production)
+- `CMS_ADMIN_USERNAME` / `CMS_ADMIN_PASSWORD_HASH` / `CMS_SESSION_SECRET` (CMS login)
 - `ADMIN_EMAILS`
 - `SHIPPING_FLAT_PKR` (optional; otherwise shipping TBC)
 - `ENABLE_COD` / `ENABLE_BANK_TRANSFER` + bank instructions / card test provider secrets
