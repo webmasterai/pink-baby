@@ -1,0 +1,818 @@
+{
+  "importedAt": "2026-10-31T06:31:33.586Z",
+  "source": "https://pinkbaby.pk",
+  "dryRun": true,
+  "totals": {
+    "discoveredUnique": 118,
+    "imported": 118,
+    "imagesDownloaded": 0,
+    "inStock": 94,
+    "outOfStock": 24
+  },
+  "discoveredByCategory": {
+    "accessories": [
+      1664,
+      1663,
+      1659,
+      1660,
+      1655,
+      1654,
+      1650,
+      1651,
+      1648,
+      1646,
+      1643,
+      1641,
+      1640,
+      1638,
+      1375,
+      1305
+    ],
+    "feeding-bottles": [
+      3186,
+      3183,
+      3178,
+      3049,
+      3048,
+      3047,
+      3042,
+      3041,
+      3040,
+      3039,
+      3038,
+      3037,
+      3036,
+      3035,
+      3021,
+      2795,
+      2793,
+      2791,
+      1859,
+      1858,
+      1857,
+      1856,
+      1855,
+      1853,
+      1846,
+      1845,
+      1844,
+      1802,
+      1800,
+      1798,
+      1797,
+      1795,
+      1794,
+      1793,
+      1792,
+      1791,
+      1789,
+      1788,
+      1774,
+      1773,
+      1772,
+      1767,
+      1763,
+      1762,
+      1761,
+      1758,
+      1754,
+      1753,
+      1752,
+      1750,
+      1748,
+      1746,
+      1702,
+      1703
+    ],
+    "pp-standard-neck-bottle": [
+      3186,
+      3183,
+      3178,
+      3049,
+      3048,
+      3047,
+      3042,
+      3041,
+      3040,
+      3039,
+      3038,
+      3037,
+      3036,
+      3035,
+      3021,
+      1846,
+      1845,
+      1844
+    ],
+    "pp-wide-neck-bottle": [
+      1856,
+      1855,
+      1853
+    ],
+    "ppsu-wide-neck-bottle": [
+      1859,
+      1858,
+      1857
+    ],
+    "pp-ultra-wideneck-bottle": [
+      2795,
+      2793,
+      2791,
+      1802,
+      1800,
+      1798,
+      1797,
+      1795,
+      1794,
+      1793,
+      1792,
+      1791,
+      1789,
+      1788,
+      1774,
+      1773,
+      1772,
+      1767,
+      1763,
+      1762,
+      1761,
+      1758,
+      1754,
+      1753,
+      1752,
+      1750,
+      1748,
+      1746
+    ],
+    "glass-bottles": [
+      3186,
+      3183,
+      3178,
+      1702,
+      1703
+    ],
+    "breast-care": [
+      1669,
+      1668,
+      1370
+    ],
+    "pacifiers": [
+      3262,
+      3259,
+      3257,
+      3255,
+      3253,
+      3251,
+      3249,
+      3248,
+      3246,
+      3245,
+      3243,
+      3239,
+      1843,
+      1842,
+      1841
+    ],
+    "teats": [
+      1905,
+      1903,
+      1899,
+      1897,
+      1895,
+      1892,
+      1890,
+      1886,
+      1884,
+      1882,
+      1880,
+      1877,
+      1874,
+      1872,
+      1870,
+      1868,
+      1866,
+      1864,
+      1862,
+      1860
+    ],
+    "sale": [
+      2769,
+      2767,
+      2764,
+      2763,
+      2762,
+      2758,
+      2757,
+      2756,
+      2755,
+      2754
+    ]
+  },
+  "importedPerCategory": {
+    "accessories": 16,
+    "feeding-bottles": 54,
+    "pp-standard-neck-bottle": 18,
+    "pp-wide-neck-bottle": 3,
+    "ppsu-wide-neck-bottle": 3,
+    "pp-ultra-wideneck-bottle": 28,
+    "glass-bottles": 5,
+    "breast-care": 3,
+    "pacifiers": 15,
+    "teats": 20,
+    "sale": 10
+  },
+  "missingFields": [],
+  "imageErrors": [],
+  "urlMapping": [
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-01/",
+      "localPath": "/product/a-01",
+      "sourceId": 2754
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-02/",
+      "localPath": "/product/a-02",
+      "sourceId": 2755
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-03/",
+      "localPath": "/product/a-03",
+      "sourceId": 2756
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-04/",
+      "localPath": "/product/a-04",
+      "sourceId": 2757
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-201-milk-dispancer/",
+      "localPath": "/product/a-201-milk-dispancer",
+      "sourceId": 2769
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-203-scilicon-breast-shield-pk-2/",
+      "localPath": "/product/a-203-scilicon-breast-shield-pk-2",
+      "sourceId": 2767
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-214-pascifer-0-6-m/",
+      "localPath": "/product/a-214-pascifer-0-6-m",
+      "sourceId": 2762
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-215-orthodontic-pascifer-18-24-m/",
+      "localPath": "/product/a-215-orthodontic-pascifer-18-24-m",
+      "sourceId": 2764
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-215-orthodontic-pascifer-6-18-m/",
+      "localPath": "/product/a-215-orthodontic-pascifer-6-18-m",
+      "sourceId": 2763
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/a-31-small-size-0-3-m/",
+      "localPath": "/product/a-31-small-size-0-3-m",
+      "sourceId": 2758
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-friut-feeder/",
+      "localPath": "/product/baby-friut-feeder",
+      "sourceId": 1654
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-fruit-feeder-l/",
+      "localPath": "/product/baby-fruit-feeder-l",
+      "sourceId": 1660
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-fruit-feeder-m/",
+      "localPath": "/product/baby-fruit-feeder-m",
+      "sourceId": 1655
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-214/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-214",
+      "sourceId": 1843
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-215/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-215",
+      "sourceId": 1842
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-216/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-216",
+      "sourceId": 1841
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-234/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-234",
+      "sourceId": 3251
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-234-01/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-234-01",
+      "sourceId": 3253
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-235/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-235",
+      "sourceId": 3255
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-235-01/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-235-01",
+      "sourceId": 3257
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-236/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-236",
+      "sourceId": 3259
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-orthodontic-pacifer-a-236-01/",
+      "localPath": "/product/baby-orthodontic-pacifer-a-236-01",
+      "sourceId": 3262
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-semi-orthodontic-pacifer-a-231/",
+      "localPath": "/product/baby-semi-orthodontic-pacifer-a-231",
+      "sourceId": 3239
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-semi-orthodontic-pacifer-a-231-01/",
+      "localPath": "/product/baby-semi-orthodontic-pacifer-a-231-01",
+      "sourceId": 3243
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-semi-orthodontic-pacifer-a-232/",
+      "localPath": "/product/baby-semi-orthodontic-pacifer-a-232",
+      "sourceId": 3245
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-semi-orthodontic-pacifer-a-232-01-copy/",
+      "localPath": "/product/baby-semi-orthodontic-pacifer-a-232-01-copy",
+      "sourceId": 3246
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-semi-orthodontic-pacifer-a-233/",
+      "localPath": "/product/baby-semi-orthodontic-pacifer-a-233",
+      "sourceId": 3248
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/baby-semi-orthodontic-pacifer-a-233-01/",
+      "localPath": "/product/baby-semi-orthodontic-pacifer-a-233-01",
+      "sourceId": 3249
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/breast-pump-with-bottle/",
+      "localPath": "/product/breast-pump-with-bottle",
+      "sourceId": 1668
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/breast-shield/",
+      "localPath": "/product/breast-shield",
+      "sourceId": 1669
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/easy-comfort-disposable-breast-pads-pk24-2/",
+      "localPath": "/product/easy-comfort-disposable-breast-pads-pk24-2",
+      "sourceId": 1370
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/fruit-feeder-large/",
+      "localPath": "/product/fruit-feeder-large",
+      "sourceId": 1664
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/fruit-feeder-medium-2/",
+      "localPath": "/product/fruit-feeder-medium-2",
+      "sourceId": 1663
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/fruit-feeder-small/",
+      "localPath": "/product/fruit-feeder-small",
+      "sourceId": 1659
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pink-baby-milk-powder-box-pp-2/",
+      "localPath": "/product/pink-baby-milk-powder-box-pp-2",
+      "sourceId": 1640
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pink-baby-milk-powder-box-pp/",
+      "localPath": "/product/pink-baby-milk-powder-box-pp",
+      "sourceId": 1638
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pink-baby-milk-powder-container-pp-2/",
+      "localPath": "/product/pink-baby-milk-powder-container-pp-2",
+      "sourceId": 1641
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pink-baby-milk-powder-container-pp/",
+      "localPath": "/product/pink-baby-milk-powder-container-pp",
+      "sourceId": 1375
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-101/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-101",
+      "sourceId": 1846
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-101-01/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-101-01",
+      "sourceId": 3021
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-101-02/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-101-02",
+      "sourceId": 3035
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-101-03/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-101-03",
+      "sourceId": 3036
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-101-04/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-101-04",
+      "sourceId": 3037
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-102/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-102",
+      "sourceId": 1845
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-102-01/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-102-01",
+      "sourceId": 3038
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-102-02/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-102-02",
+      "sourceId": 3039
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-102-03/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-102-03",
+      "sourceId": 3040
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-102-04/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-102-04",
+      "sourceId": 3041
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-103/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-103",
+      "sourceId": 1844
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-103-01/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-103-01",
+      "sourceId": 3042
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-103-02/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-103-02",
+      "sourceId": 3047
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-103-03/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-103-03",
+      "sourceId": 3048
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-standard-neck-bottle-sn-103-04/",
+      "localPath": "/product/pp-standard-neck-bottle-sn-103-04",
+      "sourceId": 3049
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-wide-neck-baby-bottle-wn-103-2/",
+      "localPath": "/product/pp-wide-neck-baby-bottle-wn-103-2",
+      "sourceId": 1856
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-wide-neck-baby-bottle-wn-104-2/",
+      "localPath": "/product/pp-wide-neck-baby-bottle-wn-104-2",
+      "sourceId": 1855
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/pp-wide-neck-baby-bottle-wn-105-2/",
+      "localPath": "/product/pp-wide-neck-baby-bottle-wn-105-2",
+      "sourceId": 1853
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ppsu-wide-neck-baby-bottle-wn-106/",
+      "localPath": "/product/ppsu-wide-neck-baby-bottle-wn-106",
+      "sourceId": 1859
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ppsu-wide-neck-baby-bottle-wn-107/",
+      "localPath": "/product/ppsu-wide-neck-baby-bottle-wn-107",
+      "sourceId": 1858
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ppsu-wide-neck-baby-bottle-wn-108/",
+      "localPath": "/product/ppsu-wide-neck-baby-bottle-wn-108",
+      "sourceId": 1857
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/silicon-spoon-feeder/",
+      "localPath": "/product/silicon-spoon-feeder",
+      "sourceId": 1643
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/silicon-spoon-feeder-3/",
+      "localPath": "/product/silicon-spoon-feeder-3",
+      "sourceId": 1648
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/silicon-spoon-feeder-2/",
+      "localPath": "/product/silicon-spoon-feeder-2",
+      "sourceId": 1646
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/silicone-spoon-pk1-2/",
+      "localPath": "/product/silicone-spoon-pk1-2",
+      "sourceId": 1650
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/silicone-spoon-pk1/",
+      "localPath": "/product/silicone-spoon-pk1",
+      "sourceId": 1651
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/spoon-with-fork/",
+      "localPath": "/product/spoon-with-fork",
+      "sourceId": 1305
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standard-neck-fast-flow-nipple-pk1-l-a-23/",
+      "localPath": "/product/standard-neck-fast-flow-nipple-pk1-l-a-23",
+      "sourceId": 1874
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standard-neck-medium-flow-nipple-pk1-m-a-22/",
+      "localPath": "/product/standard-neck-medium-flow-nipple-pk1-m-a-22",
+      "sourceId": 1880
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standard-neck-slow-flow-nipple-pk1-s-a-21-01/",
+      "localPath": "/product/standard-neck-slow-flow-nipple-pk1-s-a-21-01",
+      "sourceId": 1882
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standard-neck-slow-flow-nipple-pk1-s-a-21/",
+      "localPath": "/product/standard-neck-slow-flow-nipple-pk1-s-a-21",
+      "sourceId": 1884
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standard-neck-variable-flow-nipple-pk1-a-24-01/",
+      "localPath": "/product/standard-neck-variable-flow-nipple-pk1-a-24-01",
+      "sourceId": 1868
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standard-neck-variable-flow-nipple-pk1-a-24/",
+      "localPath": "/product/standard-neck-variable-flow-nipple-pk1-a-24",
+      "sourceId": 1870
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-glass-feeding-bottle-wn-121-copy/",
+      "localPath": "/product/ultra-wide-neck-glass-feeding-bottle-wn-121-copy",
+      "sourceId": 3178
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standered-neck-glass-feeding-bottle-sng-122/",
+      "localPath": "/product/standered-neck-glass-feeding-bottle-sng-122",
+      "sourceId": 3183
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/standered-neck-glass-feeding-bottle-sng-123/",
+      "localPath": "/product/standered-neck-glass-feeding-bottle-sng-123",
+      "sourceId": 3186
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/tandard-neck-fast-flow-nipple-pk1-l-a-23-01/",
+      "localPath": "/product/tandard-neck-fast-flow-nipple-pk1-l-a-23-01",
+      "sourceId": 1872
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/tandard-neck-medium-flow-nipple-pk1-m-a-22-01/",
+      "localPath": "/product/tandard-neck-medium-flow-nipple-pk1-m-a-22-01",
+      "sourceId": 1877
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-110-01/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-110-01",
+      "sourceId": 1802
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-110-02/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-110-02",
+      "sourceId": 1800
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-110-03/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-110-03",
+      "sourceId": 1798
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-110-04/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-110-04",
+      "sourceId": 1797
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-110/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-110",
+      "sourceId": 2791
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-110-05/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-110-05",
+      "sourceId": 2793
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-110-06/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-110-06",
+      "sourceId": 2795
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-111-01/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-111-01",
+      "sourceId": 1795
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-111-02/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-111-02",
+      "sourceId": 1794
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottlewn-111-03/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottlewn-111-03",
+      "sourceId": 1793
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ulrta-wide-neck-feeding-bottle-wn-111-04/",
+      "localPath": "/product/ulrta-wide-neck-feeding-bottle-wn-111-04",
+      "sourceId": 1792
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-fast-flow-nipple-pk2-l-a-33/",
+      "localPath": "/product/ultra-wide-neck-fast-flow-nipple-pk2-l-a-33",
+      "sourceId": 1862
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-111-120ml-pk1/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-111-120ml-pk1",
+      "sourceId": 1791
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-112-120ml-pk1/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-112-120ml-pk1",
+      "sourceId": 1789
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-113-120ml-pk1/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-113-120ml-pk1",
+      "sourceId": 1788
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-114-01/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-114-01",
+      "sourceId": 1774
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-114-02/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-114-02",
+      "sourceId": 1773
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-114-03/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-114-03",
+      "sourceId": 1772
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-114-04/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-114-04",
+      "sourceId": 1767
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-114/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-114",
+      "sourceId": 1763
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-115/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-115",
+      "sourceId": 1762
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-116/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-116",
+      "sourceId": 1761
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-117-1/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-117-1",
+      "sourceId": 1758
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-117-02/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-117-02",
+      "sourceId": 1754
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-117-3/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-117-3",
+      "sourceId": 1753
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-117-4/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-117-4",
+      "sourceId": 1752
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-117/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-117",
+      "sourceId": 1750
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-118/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-118",
+      "sourceId": 1748
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-feeding-bottle-wn-119/",
+      "localPath": "/product/ultra-wide-neck-feeding-bottle-wn-119",
+      "sourceId": 1746
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-glass-feeding-bottle-2/",
+      "localPath": "/product/ultra-wide-neck-glass-feeding-bottle-2",
+      "sourceId": 1702
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-glass-feeding-bottle/",
+      "localPath": "/product/ultra-wide-neck-glass-feeding-bottle",
+      "sourceId": 1703
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-medium-flow-nipple-pk2-m-a-32/",
+      "localPath": "/product/ultra-wide-neck-medium-flow-nipple-pk2-m-a-32",
+      "sourceId": 1864
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-slow-flow-nipple-pk2-s-a-31/",
+      "localPath": "/product/ultra-wide-neck-slow-flow-nipple-pk2-s-a-31",
+      "sourceId": 1866
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/ultra-wide-neck-variable-flow-nipple-pk2-a-34/",
+      "localPath": "/product/ultra-wide-neck-variable-flow-nipple-pk2-a-34",
+      "sourceId": 1860
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-fast-flow-nipple-pk1-l-a-13/",
+      "localPath": "/product/wide-neck-fast-flow-nipple-pk1-l-a-13",
+      "sourceId": 1890
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-fast-flow-nipple-pk2-l-a-03/",
+      "localPath": "/product/wide-neck-fast-flow-nipple-pk2-l-a-03",
+      "sourceId": 1899
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-medium-flow-nipple-pk1-m-a-12/",
+      "localPath": "/product/wide-neck-medium-flow-nipple-pk1-m-a-12",
+      "sourceId": 1892
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-medium-flow-nipple-pk2-m-a-02/",
+      "localPath": "/product/wide-neck-medium-flow-nipple-pk2-m-a-02",
+      "sourceId": 1903
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-slow-flow-nipple-pk1-s-a-11/",
+      "localPath": "/product/wide-neck-slow-flow-nipple-pk1-s-a-11",
+      "sourceId": 1895
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-slow-flow-nipple-pk2-s-a-01/",
+      "localPath": "/product/wide-neck-slow-flow-nipple-pk2-s-a-01",
+      "sourceId": 1905
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-variable-flow-nipple-pk1-a-14/",
+      "localPath": "/product/wide-neck-variable-flow-nipple-pk1-a-14",
+      "sourceId": 1886
+    },
+    {
+      "sourceUrl": "https://pinkbaby.pk/product/wide-neck-variable-flow-nipple-pk2-a-04/",
+      "localPath": "/product/wide-neck-variable-flow-nipple-pk2-a-04",
+      "sourceId": 1897
+    }
+  ]
+}

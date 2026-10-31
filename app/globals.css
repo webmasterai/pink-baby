@@ -1,26 +1,659 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pb-pink: #e91e8c;
+  --pb-pink-dark: #c2185b;
+  --pb-logo-green: #8ace27;
+  --pb-logo-green-dark: #6fad1c;
+  --pb-logo-blue: #009ae9;
+  --pb-logo-blue-dark: #0082c4;
+  --pb-sage: #c9d6c4;
+  --pb-sage-deep: #a8bba3;
+  --pb-blush: #f8e9ee;
+  --pb-ivory: #faf7f4;
+  --pb-charcoal: #2b2b2b;
+  --pb-muted: #6b6b6b;
+  --pb-border: #e5e1dc;
+  --pb-white: #ffffff;
+  --pb-icon-soft: #f3d6e4;
+  --pb-icon-sage: #d7e4d4;
+  --background: var(--pb-white);
+  --foreground: var(--pb-charcoal);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-pb-pink: var(--pb-pink);
+  --color-pb-pink-dark: var(--pb-pink-dark);
+  --color-pb-logo-green: var(--pb-logo-green);
+  --color-pb-logo-green-dark: var(--pb-logo-green-dark);
+  --color-pb-logo-blue: var(--pb-logo-blue);
+  --color-pb-logo-blue-dark: var(--pb-logo-blue-dark);
+  --color-pb-sage: var(--pb-sage);
+  --color-pb-sage-deep: var(--pb-sage-deep);
+  --color-pb-blush: var(--pb-blush);
+  --color-pb-ivory: var(--pb-ivory);
+  --color-pb-charcoal: var(--pb-charcoal);
+  --color-pb-muted: var(--pb-muted);
+  --color-pb-border: var(--pb-border);
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-jakarta);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pb-pink);
+  outline-offset: 2px;
+}
+
+/* Shared storefront width: ~92–94% on desktop, capped ~1440px.
+   Mobile gutters ~16–20px via padding; from tablet up the % width
+   alone supplies ~24–48px side gutters at normal desktop sizes. */
+.pb-container {
+  box-sizing: border-box;
+  width: min(94vw, 1440px);
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.125rem; /* ~18px mobile */
+}
+
+@media (min-width: 640px) {
+  .pb-container {
+    width: min(93vw, 1440px);
+    padding-inline: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pb-container {
+    width: min(94vw, 1440px);
+  }
+}
+
+.pb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1.2;
+  padding: 0.8rem 1.45rem;
+  transition:
+    background-color var(--pb-motion-hover) var(--pb-ease-soft),
+    color var(--pb-motion-hover) var(--pb-ease-soft),
+    border-color var(--pb-motion-hover) var(--pb-ease-soft),
+    transform var(--pb-motion-hover) var(--pb-ease-soft);
+}
+
+.pb-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.pb-btn:focus-visible {
+  outline: 2px solid var(--pb-pink);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pb-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+}
+
+.pb-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.985);
+}
+
+.pb-btn .pb-btn-arrow {
+  transition: transform var(--pb-motion-hover) var(--pb-ease-soft);
+  display: inline-block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pb-btn:hover:not(:disabled) .pb-btn-arrow {
+    transform: translateX(3px);
+  }
+}
+
+.pb-btn-primary {
+  background: var(--pb-pink);
+  color: #fff;
+  border: 1px solid var(--pb-pink);
+}
+
+.pb-btn-primary:hover:not(:disabled) {
+  background: var(--pb-pink-dark);
+  border-color: var(--pb-pink-dark);
+}
+
+.pb-btn-outline {
+  background: #fff;
+  color: var(--pb-pink);
+  border: 1.5px solid var(--pb-pink);
+}
+
+.pb-btn-outline:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--pb-pink) 8%, white);
+}
+
+.pb-btn-whatsapp {
+  background: var(--pb-logo-green);
+  color: #fff;
+  border: 1px solid var(--pb-logo-green);
+}
+
+.pb-btn-whatsapp:hover:not(:disabled) {
+  background: var(--pb-logo-green-dark);
+  border-color: var(--pb-logo-green-dark);
+}
+
+.pb-input {
+  width: 100%;
+  border: 1px solid var(--pb-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 0.95rem;
+  background: #fff;
+  color: var(--pb-charcoal);
+  font: inherit;
+  font-size: 0.98rem;
+}
+
+.pb-input::placeholder {
+  color: #9a9590;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ——— Motion tokens (soft, premium baby-care) ——— */
+:root {
+  --pb-motion-hover: 180ms;
+  --pb-motion-fast: 180ms;
+  --pb-motion-reveal: 520ms;
+  --pb-motion-drawer: 340ms;
+  --pb-motion-accordion: 300ms;
+  --pb-stagger-step: 55ms;
+  --pb-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pb-ease-soft: cubic-bezier(0.33, 1, 0.32, 1);
+  --pb-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Visible by default (SSR / no-JS). Hide only when .is-armed and not yet visible. */
+.pb-reveal,
+.pb-stagger-item,
+.pb-hero-part,
+.pb-heading-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html.js-ready .pb-reveal.is-armed:not(.is-visible) {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+
+html.js-ready .pb-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--pb-motion-reveal) var(--pb-ease-soft),
+    transform var(--pb-motion-reveal) var(--pb-ease-soft);
+  transition-delay: var(--pb-reveal-delay, 0ms);
+}
+
+html.js-ready .pb-reveal-sm.is-armed:not(.is-visible) {
+  transform: translate3d(0, 10px, 0);
+}
+
+/* Staggered grids — parent arms/hides children together */
+html.js-ready .pb-stagger.is-armed:not(.is-visible) .pb-stagger-item {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+}
+
+html.js-ready .pb-stagger.is-visible .pb-stagger-item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--pb-motion-reveal) var(--pb-ease-soft),
+    transform var(--pb-motion-reveal) var(--pb-ease-soft);
+  transition-delay: calc(
+    var(--pb-stagger-index, 0) * var(--pb-stagger-step, 55ms)
+  );
+}
+
+/* Section headings inside a visible Reveal */
+html.js-ready .pb-reveal.is-armed:not(.is-visible) .pb-heading-reveal {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+}
+
+html.js-ready .pb-reveal.is-visible .pb-heading-reveal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--pb-motion-reveal) var(--pb-ease-soft),
+    transform var(--pb-motion-reveal) var(--pb-ease-soft);
+  transition-delay: var(--pb-reveal-delay, 40ms);
+}
+
+html.js-ready .pb-reveal.is-visible .pb-heading-reveal-sub {
+  transition-delay: calc(var(--pb-reveal-delay, 40ms) + 70ms);
+}
+
+/* Hero copy sequence — image stays outside this tree.
+   Only hide after `.is-play` so SSR/hydration never flash empty. */
+.pb-hero-copy .pb-hero-part {
+  will-change: opacity, transform;
+}
+
+html.js-ready .pb-hero-copy.is-play:not(.is-ready) .pb-hero-part {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+}
+
+html.js-ready .pb-hero-copy.is-play.is-ready .pb-hero-part {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 560ms var(--pb-ease-soft),
+    transform 560ms var(--pb-ease-soft);
+}
+
+html.js-ready .pb-hero-copy.is-play.is-ready .pb-hero-part-1 {
+  transition-delay: 40ms;
+}
+html.js-ready .pb-hero-copy.is-play.is-ready .pb-hero-part-2 {
+  transition-delay: 110ms;
+}
+html.js-ready .pb-hero-copy.is-play.is-ready .pb-hero-part-3 {
+  transition-delay: 180ms;
+}
+html.js-ready .pb-hero-copy.is-play.is-ready .pb-hero-part-4 {
+  transition-delay: 250ms;
+}
+
+/* Hero media: LCP image paints at scale(1); gentle settle plays once after paint */
+.pb-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.pb-hero-media .pb-hero-img {
+  transform: scale(1);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+html.js-ready .pb-hero-media.is-animating .pb-hero-img {
+  animation: pb-hero-settle 1.25s var(--pb-ease-soft) both;
+}
+
+@keyframes pb-hero-settle {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.pb-card-lift {
+  transition:
+    transform var(--pb-motion-hover) var(--pb-ease-soft),
+    box-shadow var(--pb-motion-hover) var(--pb-ease-soft),
+    border-color var(--pb-motion-hover) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pb-card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgb(43 43 43 / 9%);
+  }
+}
+
+.pb-img-zoom {
+  transition: transform 420ms var(--pb-ease-soft);
+  transform-origin: center center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .pb-img-zoom,
+  .group:focus-within .pb-img-zoom {
+    transform: scale(1.035);
+  }
+}
+
+/* Quick-view eye: visible on touch; fade/slide on fine pointer hover/focus */
+.pb-quick-view {
+  transition:
+    opacity var(--pb-motion-hover) var(--pb-ease-soft),
+    transform var(--pb-motion-hover) var(--pb-ease-soft),
+    background-color var(--pb-motion-hover) ease,
+    color var(--pb-motion-hover) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pb-quick-view {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+
+  .group:hover .pb-quick-view,
+  .group:focus-within .pb-quick-view,
+  .pb-quick-view:focus-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pb-heart-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.22);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pb-heart-pop {
+  animation: pb-heart-pop 380ms var(--pb-ease-soft);
+}
+
+.pb-modal-root {
+  opacity: 0;
+  transition: opacity 280ms var(--pb-ease-out);
+}
+
+.pb-modal-root.is-open {
+  opacity: 1;
+}
+
+.pb-modal-panel {
+  transform: translate3d(0, 10px, 0) scale(0.98);
+  opacity: 0;
+  transition:
+    opacity 320ms var(--pb-ease-soft),
+    transform 320ms var(--pb-ease-soft);
+}
+
+.pb-modal-root.is-open .pb-modal-panel {
+  transform: none;
+  opacity: 1;
+}
+
+.pb-gallery-main {
+  position: relative;
+}
+
+.pb-gallery-main .pb-gallery-fade {
+  animation: pb-fade-in 320ms var(--pb-ease-soft) both;
+}
+
+.pb-thumb {
+  transition:
+    border-color var(--pb-motion-hover) ease,
+    transform var(--pb-motion-hover) var(--pb-ease-soft),
+    box-shadow var(--pb-motion-hover) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pb-thumb:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.pb-thumb.is-active {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--pb-pink) 35%, transparent);
+}
+
+.pb-nav-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(-50%, 6px, 0);
+  transition:
+    opacity 180ms var(--pb-ease-soft),
+    transform 180ms var(--pb-ease-soft),
+    visibility 180ms;
+}
+
+.pb-nav-dropdown.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.pb-cart-line {
+  animation: pb-fade-rise 360ms var(--pb-ease-soft) both;
+}
+
+.pb-tick {
+  display: inline-block;
+  transition: transform 200ms var(--pb-ease-soft);
+}
+
+.pb-tick.is-flash {
+  animation: pb-pulse-once 360ms var(--pb-ease-soft);
+}
+
+.pb-status-msg {
+  animation: pb-fade-rise 320ms var(--pb-ease-soft) both;
+}
+
+.pb-tab-panel {
+  animation: pb-fade-in 280ms var(--pb-ease-soft) both;
+}
+
+.pb-drawer-root {
+  pointer-events: none;
+}
+
+.pb-drawer-root.is-open {
+  pointer-events: auto;
+}
+
+.pb-drawer-backdrop {
+  opacity: 0;
+  transition: opacity var(--pb-motion-drawer) var(--pb-ease-out);
+}
+
+.pb-drawer-root.is-open .pb-drawer-backdrop {
+  opacity: 1;
+}
+
+.pb-drawer-panel {
+  transform: translate3d(100%, 0, 0);
+  transition: transform var(--pb-motion-drawer) var(--pb-ease-out);
+  will-change: transform;
+}
+
+.pb-drawer-root.is-open .pb-drawer-panel {
+  transform: translate3d(0, 0, 0);
+}
+
+.pb-drawer-panel-left {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.pb-drawer-root.is-open .pb-drawer-panel-left {
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes pb-pulse-once {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pb-added-pulse {
+  animation: pb-pulse-once 480ms var(--pb-ease-soft);
+}
+
+@keyframes pb-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pb-fade-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pb-fade-in {
+  animation: pb-fade-rise 380ms var(--pb-ease-soft) both;
+}
+
+.pb-accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--pb-motion-accordion) var(--pb-ease-soft);
+}
+
+.pb-accordion-body.is-open {
+  grid-template-rows: 1fr;
+}
+
+.pb-accordion-body > .pb-accordion-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+dialog.pb-dialog-motion[open] {
+  animation: pb-fade-rise 320ms var(--pb-ease-soft);
+}
+
+dialog.pb-dialog-motion[open]::backdrop {
+  animation: pb-fade-in 220ms var(--pb-ease-out);
+  background: rgb(0 0 0 / 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html.js-ready .pb-reveal.is-armed:not(.is-visible),
+  html.js-ready .pb-reveal.is-visible,
+  html.js-ready .pb-stagger.is-armed:not(.is-visible) .pb-stagger-item,
+  html.js-ready .pb-stagger.is-visible .pb-stagger-item,
+  html.js-ready .pb-hero-copy.is-play:not(.is-ready) .pb-hero-part,
+  html.js-ready .pb-hero-copy.is-play.is-ready .pb-hero-part,
+  html.js-ready .pb-reveal.is-armed:not(.is-visible) .pb-heading-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .pb-drawer-panel,
+  .pb-drawer-panel-left,
+  .pb-drawer-backdrop {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .pb-drawer-root:not(.is-open) {
+    display: none;
+  }
+
+  .pb-btn:hover:not(:disabled),
+  .pb-btn:active:not(:disabled),
+  .pb-card-lift:hover,
+  .pb-btn:hover:not(:disabled) .pb-btn-arrow {
+    transform: none !important;
+  }
+
+  html.js-ready .pb-hero-media.is-animating .pb-hero-img,
+  .pb-modal-panel,
+  .pb-nav-dropdown,
+  .pb-quick-view,
+  .pb-cart-line,
+  .pb-gallery-main .pb-gallery-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .pb-nav-dropdown:not(.is-open) {
+    display: none;
+  }
+
+  .pb-modal-root:not(.is-open) {
+    display: none;
+  }
 }

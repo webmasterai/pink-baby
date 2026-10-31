@@ -1,0 +1,123 @@
+[
+  {
+    "id": 15,
+    "name": "ACCESSORIES",
+    "slug": "accessories",
+    "description": "",
+    "parent": 0,
+    "count": 16,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/accessories/"
+  },
+  {
+    "id": 335,
+    "name": "BREAST CARE",
+    "slug": "breast-care",
+    "description": "",
+    "parent": 0,
+    "count": 3,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/breast-care/"
+  },
+  {
+    "id": 329,
+    "name": "FEEDING BOTTLES",
+    "slug": "feeding-bottles",
+    "description": "",
+    "parent": 0,
+    "count": 54,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/feeding-bottles/"
+  },
+  {
+    "id": 334,
+    "name": "GLASS BOTTLES",
+    "slug": "glass-bottles",
+    "description": "",
+    "parent": 329,
+    "count": 5,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/feeding-bottles/glass-bottles/"
+  },
+  {
+    "id": 337,
+    "name": "PACIFIERS",
+    "slug": "pacifiers",
+    "description": "",
+    "parent": 0,
+    "count": 15,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/pacifiers/"
+  },
+  {
+    "id": 330,
+    "name": "PP STANDARD NECK BOTTLE",
+    "slug": "pp-standard-neck-bottle",
+    "description": "",
+    "parent": 329,
+    "count": 18,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/feeding-bottles/pp-standard-neck-bottle/"
+  },
+  {
+    "id": 333,
+    "name": "PP ULTRA WIDENECK BOTTLE",
+    "slug": "pp-ultra-wideneck-bottle",
+    "description": "",
+    "parent": 329,
+    "count": 28,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/feeding-bottles/pp-ultra-wideneck-bottle/"
+  },
+  {
+    "id": 331,
+    "name": "PP WIDE NECK BOTTLE",
+    "slug": "pp-wide-neck-bottle",
+    "description": "",
+    "parent": 329,
+    "count": 3,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/feeding-bottles/pp-wide-neck-bottle/"
+  },
+  {
+    "id": 332,
+    "name": "PPSU WIDE NECK BOTTLE",
+    "slug": "ppsu-wide-neck-bottle",
+    "description": "",
+    "parent": 329,
+    "count": 3,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/feeding-bottles/ppsu-wide-neck-bottle/"
+  },
+  {
+    "id": 346,
+    "name": "Sale",
+    "slug": "sale",
+    "description": "",
+    "parent": 0,
+    "count": 10,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/sale/"
+  },
+  {
+    "id": 336,
+    "name": "TEATS",
+    "slug": "teats",
+    "description": "",
+    "parent": 0,
+    "count": 20,
+    "image": null,
+    "review_count": 0,
+    "permalink": "https://pinkbaby.pk/product-category/teats/"
+  }
+]

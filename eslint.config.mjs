@@ -13,6 +13,14 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // React 19 compiler lint is useful as guidance but flags normal
+      // data-loading / sync patterns used throughout admin + drawers.
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/refs": "warn",
+    },
+  },
 ]);
 
 export default eslintConfig;

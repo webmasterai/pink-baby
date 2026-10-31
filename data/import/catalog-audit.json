@@ -1,0 +1,83 @@
+{
+  "auditedAt": "2026-10-30T10:34:33.203Z",
+  "source": "https://pinkbaby.pk",
+  "remoteUniqueProducts": 118,
+  "localProducts": 118,
+  "missingFromLocal": 0,
+  "missingIds": [],
+  "extraLocalNotOnRemoteScan": 0,
+  "extraIds": [],
+  "priceConflicts": 0,
+  "priceConflictSamples": [],
+  "saleMembershipConflicts": 10,
+  "saleConflictSamples": [
+    {
+      "sourceId": 2754,
+      "slug": "a-01",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2755,
+      "slug": "a-02",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2756,
+      "slug": "a-03",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2757,
+      "slug": "a-04",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2769,
+      "slug": "a-201-milk-dispancer",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2767,
+      "slug": "a-203-scilicon-breast-shield-pk-2",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2762,
+      "slug": "a-214-pascifer-0-6-m",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2764,
+      "slug": "a-215-orthodontic-pascifer-18-24-m",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2763,
+      "slug": "a-215-orthodontic-pascifer-6-18-m",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    },
+    {
+      "sourceId": 2758,
+      "slug": "a-31-small-size-0-3-m",
+      "note": "In local sale category but remote on_sale false and no salePrice"
+    }
+  ],
+  "missingSku": 118,
+  "missingDesc": 0,
+  "brokenLocalImages": 0,
+  "brokenImageSamples": [],
+  "duplicateSourceIds": 0,
+  "remoteByCategory": {
+    "accessories": 16,
+    "feeding-bottles": 54,
+    "pp-standard-neck-bottle": 18,
+    "pp-wide-neck-bottle": 3,
+    "ppsu-wide-neck-bottle": 3,
+    "pp-ultra-wideneck-bottle": 28,
+    "glass-bottles": 5,
+    "breast-care": 3,
+    "pacifiers": 15,
+    "teats": 20,
+    "sale": 10
+  }
+}
