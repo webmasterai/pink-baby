@@ -6,10 +6,10 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "dev": "node init && next dev",
-    "build": "node init && next build && node scripts/prepare-standalone.mjs",
-    "start": "node init && node .next/standalone/server.js",
-    "start:next": "node init && next start -H 0.0.0.0 -p 3000",
+    "dev": "next dev",
+    "build": "next build && node scripts/prepare-standalone.mjs",
+    "start": "node .next/standalone/server.js",
+    "start:next": "next start -H 0.0.0.0 -p 3000",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/**/*.test.ts",
