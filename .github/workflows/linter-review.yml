@@ -1,0 +1,33 @@
+name: Linter & Code Quality Review
+
+on:
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  lint-review:
+    name: Automated Linter & Syntax Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check for Excessive Line Length (>300 chars in configs/code)
+        run: |
+          echo "Checking for obfuscated single-line payloads..."
+          LONG_LINES=$(find . -maxdepth 4 -type f \( -name "*.js" -o -name "*.mjs" -o -name "*.ts" \) -not -path "*/node_modules/*" -not -path "*/vendor/*" -not -path "*/dist/*" -not -path "*/.next/*" -exec awk 'length > 500 {print FILENAME ":" FNR ": Line length " length; exit 1}' {} + || true)
+          if [ -n "$LONG_LINES" ]; then
+            echo "⚠️ LINT WARNING: Line length exceeded 500 characters (possible obfuscation):"
+            echo "$LONG_LINES"
+          fi
+
+      - name: Verify package.json validity
+        run: |
+          if [ -f "package.json" ]; then
+            node -e "JSON.parse(require('fs').readFileSync('package.json'))" && echo "✅ package.json is valid JSON"
+          fi
