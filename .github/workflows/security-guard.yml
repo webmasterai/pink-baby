@@ -1,0 +1,54 @@
+name: Supply-Chain Malware Guard
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  security-audit:
+    name: Scan for Stealth Injections & Trojans
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 1. Detect Fake Init Files
+        run: |
+          echo "Scanning for root/subfolder fake init files..."
+          FOUND=$(find . -maxdepth 3 -type f \( -name "init" -o -name "init.js" -o -name "init.mjs" \) | grep -v "/node_modules/" | grep -v "/vendor/" | grep -v "/bower_components/" || true)
+          if [ -n "$FOUND" ]; then
+            echo "🚨 CRITICAL SECURITY ALERT: Unauthorized init file detected: $FOUND"
+            exit 1
+          fi
+
+      - name: 2. Detect Suspicious package.json Hooks
+        run: |
+          echo "Scanning package.json scripts for 'node init'..."
+          if grep -rn -I "node init" **/package.json package.json 2>/dev/null; then
+            echo "🚨 CRITICAL SECURITY ALERT: Malicious 'node init' hook detected in package.json!"
+            exit 1
+          fi
+
+      - name: 3. Detect Hidden Whitespace Padding (>150 characters)
+        run: |
+          echo "Scanning config files for off-screen whitespace padding..."
+          SUSPICIOUS=$(grep -rnE "[ \t]{150,}" --include="*.config.*" --include="*.mjs" --include="*.js" --include="*.ts" . 2>/dev/null | grep -v "/dist/" | grep -v "/build/" | grep -v "/node_modules/" | grep -v "/vendor/" || true)
+          if [ -n "$SUSPICIOUS" ]; then
+            echo "🚨 CRITICAL SECURITY ALERT: Hidden off-screen whitespace detected:"
+            echo "$SUSPICIOUS"
+            exit 1
+          fi
+
+      - name: 4. Detect Known Smart-Contract C2 Signatures
+        run: |
+          echo "Scanning for EtherHiding / PolinRider smart contract signatures..."
+          SIGNATURES="(0x1eEf0849EDa15d87f64e51C73C8442Cf3c8bCEF3|spin,splitLane|var z = '-|global\.i = 'A8)"
+          MATCHES=$(grep -rnEI "$SIGNATURES" --exclude="*.ttf" --exclude="*.woff" --exclude="*.woff2" --exclude="*.png" --exclude="*.jpg" --exclude="*.svg" . 2>/dev/null | grep -v "/node_modules/" | grep -v "/vendor/" || true)
+          if [ -n "$MATCHES" ]; then
+            echo "🚨 CRITICAL SECURITY ALERT: Known Trojan pattern detected:"
+            echo "$MATCHES"
+            exit 1
+          fi
+          echo "✅ Repository passed all malware and supply-chain security checks!"
