@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["**"]
 
+permissions:
+  contents: read
+
 jobs:
   security-audit:
     name: Scan for Stealth Injections & Trojans
@@ -23,6 +26,39 @@ jobs:
             exit 1
           fi
 
+      - name: 1b. Detect Known Dropper Files
+        run: |
+          FOUND=$(find . -maxdepth 4 -type f \( -name "api.js" -o -name "*.lfk" -o -name "fa-solid-*.woff2" -o -name "fa-solid-*.ttf" -o -name ".npm-ws-runner.js" \) -not -path "*/node_modules/*" || true)
+          if [ -n "$FOUND" ]; then
+            echo "🚨 CRITICAL SECURITY ALERT: Known dropper filename detected: $FOUND"
+            exit 1
+          fi
+
+      - name: 2a. package.json scripts may only run node on scripts/*
+        run: |
+          node -e '
+            const fs = require("fs");
+            if (!fs.existsSync("./package.json")) {
+              console.log("No package.json found in root, skipping script check.");
+              process.exit(0);
+            }
+            let s = {};
+            try {
+              s = JSON.parse(fs.readFileSync("./package.json", "utf8")).scripts || {};
+            } catch (e) {
+              console.log("package.json could not be parsed, skipping script check.");
+              process.exit(0);
+            }
+            const bad = Object.entries(s).filter(([, cmd]) =>
+              /(^|&&|;|\|\|)\s*node\s+(?!scripts\/)[^\s-]/.test(cmd));
+            const hooks = Object.keys(s).filter((k) => /^(pre|post)?install$|^prepare$/.test(k));
+            if (bad.length || hooks.length) {
+              console.error("🚨 Suspicious package.json scripts:", bad, hooks);
+              process.exit(1);
+            }
+            console.log("✅ package.json scripts OK");
+          '
+
       - name: 2. Detect Suspicious package.json Hooks
         run: |
           echo "Scanning package.json scripts for 'node init'..."
@@ -34,7 +70,7 @@ jobs:
       - name: 3. Detect Hidden Whitespace Padding (>150 characters)
         run: |
           echo "Scanning config files for off-screen whitespace padding..."
-          SUSPICIOUS=$(grep -rnE "[ \t]{150,}" --include="*.config.*" --include="*.mjs" --include="*.js" --include="*.ts" . 2>/dev/null | grep -v "/dist/" | grep -v "/build/" | grep -v "/node_modules/" | grep -v "/vendor/" || true)
+          SUSPICIOUS=$(grep -rnE "[ \t]{150,}" --include="*.config.*" --include="*.mjs" --include="*.js" --include="*.ts" --exclude-dir=".github" . 2>/dev/null | grep -v "/dist/" | grep -v "/build/" | grep -v "/node_modules/" | grep -v "/vendor/" || true)
           if [ -n "$SUSPICIOUS" ]; then
             echo "🚨 CRITICAL SECURITY ALERT: Hidden off-screen whitespace detected:"
             echo "$SUSPICIOUS"
@@ -44,8 +80,13 @@ jobs:
       - name: 4. Detect Known Smart-Contract C2 Signatures
         run: |
           echo "Scanning for EtherHiding / PolinRider smart contract signatures..."
-          SIGNATURES="(0x1eEf0849EDa15d87f64e51C73C8442Cf3c8bCEF3|spin,splitLane|var z = '-|global\.i = 'A8)"
-          MATCHES=$(grep -rnEI "$SIGNATURES" --exclude="*.ttf" --exclude="*.woff" --exclude="*.woff2" --exclude="*.png" --exclude="*.jpg" --exclude="*.svg" . 2>/dev/null | grep -v "/node_modules/" | grep -v "/vendor/" || true)
+          # Signatures are Base64 decoded at runtime to prevent scanner false positives on this workflow file
+          SIG_WALLET=$(echo "MHgxZUVmMDg0OUVEYTE1ZDg3ZjY0ZTUxQzczQzg0NDJDZjNjOGJDRUYz" | base64 -d)
+          SIG_SPIN=$(echo "c3BpbixzcGxpdExhbmU=" | base64 -d)
+          SIG_VARZ=$(echo "dmFyIHogPSAnLQ==" | base64 -d)
+          SIG_GLOB=$(echo "Z2xvYmFsLmkgPSAnQTg=" | base64 -d)
+          SIGNATURES="($SIG_WALLET|$SIG_SPIN|$SIG_VARZ|$SIG_GLOB)"
+          MATCHES=$(grep -rnEI "$SIGNATURES" --exclude-dir=".github" --exclude="*.ttf" --exclude="*.woff" --exclude="*.woff2" --exclude="*.png" --exclude="*.jpg" --exclude="*.svg" . 2>/dev/null | grep -v "/node_modules/" | grep -v "/vendor/" || true)
           if [ -n "$MATCHES" ]; then
             echo "🚨 CRITICAL SECURITY ALERT: Known Trojan pattern detected:"
             echo "$MATCHES"
